@@ -95,8 +95,7 @@ const ClashToolsLanding = () => {
     }
   ];
 
-  // Testimonials
-  const testimonials = [
+ const testimonials = [
     {
       name: "Lightning McQueen",
       clan: "Speed Demons",
@@ -119,7 +118,6 @@ const ClashToolsLanding = () => {
       achievement: "Undefeated"
     }
   ];
-
   // Three.js setup with enhanced visuals
   useEffect(() => {
     if (!heroRef.current || !isClient) return;
@@ -437,9 +435,9 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           {/* Resource Stats (Desktop Only) */}
           <div className="hidden lg:flex items-center space-x-3">
             <ResourceDisplay type="gold" value={stats.gold} emoji={<Image src="/icons/gold.webp" alt="Gold" width={20} height={20} className="w-5 h-5" />} color="yellow" />
-            <ResourceDisplay type="elixir" value={stats.elixir} emoji={<Image src="/icons/elixir" alt="Elixir" className="w-5 h-5" />} color="pink" />
-            <ResourceDisplay type="dark" value={stats.darkElixir} emoji={<Image src="/icons/dark.webp" alt="Dark Elixir" className="w-5 h-5" />} color="purple" />
-            <ResourceDisplay type="gems" value={stats.gems} emoji={<Image src="/icons/gem" alt="Gems" className="w-5 h-5" />} color="cyan" />
+            <ResourceDisplay type="elixir" value={stats.elixir} emoji={<Image src="/icons/elixir" alt="Elixir" width={20} height={20} className="w-5 h-5" />} color="pink" />
+            <ResourceDisplay type="dark" value={stats.darkElixir} emoji={<Image src="/icons/dark.webp" alt="Dark Elixir" width={20} height={20} className="w-5 h-5" />} color="purple" />
+            <ResourceDisplay type="gems" value={stats.gems} emoji={<Image src="/icons/gem" alt="Gems" width={20} height={20} className="w-5 h-5" />} color="cyan" />
           </div>
 
           {/* Desktop Menu (hidden on mobile) */}
@@ -455,7 +453,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
             ))}
 
             <ClashButton onClick={() => {}} size="sm">
-              <Image src="/icons/start.gif.png" alt="Get Started" className="w-6 h-6 inline mr-1" />
+              <Image src="/icons/start.gif.png" alt="Get Started" width={20} height={20} className="w-6 h-6 inline mr-1" />
               Get Started
             </ClashButton>
           </div>
@@ -501,7 +499,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           ))}
 
           <ClashButton onClick={() => setIsMenuOpen(false)} size="sm">
-            <Image src="/icons/start.gif" alt="Start" className="w-5 h-5 inline mr-2" />
+            <Image src="/icons/start.gif.png" alt="Start" width={20} height={20} className="w-5 h-5 inline mr-2" />
             Get Started
           </ClashButton>
         </nav>
@@ -516,13 +514,13 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           <ResourceDisplay
             type="trophies"
             value={stats.trophies}
-            emoji={<Image src="/icons/trophy.png" alt="Trophies" className="w-8 h-8 inline" />}
+            emoji={<Image src="/icons/trophy.png" alt="Trophies" width={20} height={20} className="w-8 h-8 inline" />}
             color="yellow"
           />
           <ResourceDisplay
             type="clan"
             value={stats.clanLevel}
-            emoji={<Image src="/icons/level.png" alt="Clan Level" className="w-8 h-8 inline" />}
+            emoji={<Image src="/icons/level.png" alt="Clan Level"  width={20} height={20} className="w-8 h-8 inline" />}
             color="blue"
           />
         </div>
@@ -536,7 +534,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
             <div className="w-32 h-32 mx-auto mb-6 relative">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-red-500/20 rounded-full animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-yellow-400">
-                <Image src="/icons/th17" alt="Town Hall" className="w-20 h-20" />
+                <Image src="/icons/th17" alt="Town Hall" width={20} height={20} className="w-20 h-20" />
               </div>
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
                 TH17
@@ -557,11 +555,11 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
             <ClashButton onClick={() => { }} variant="primary" size="lg">
-              <Image src="/icons/castle.png" alt="Start Building" className="w-8 h-8 inline mr-2" />
+              <Image src="/icons/castle.png" alt="Start Building" width={20} height={20} className="w-8 h-8 inline mr-2" />
               Start Building Now
             </ClashButton>
             <ClashButton onClick={() => { }} variant="secondary" size="lg">
-              <Image src="/icons/sword" alt="Battle Tools" className="w-8 h-8 inline mr-2" />
+              <Image src="/icons/sword" alt="Battle Tools" width={20} height={20}className="w-8 h-8 inline mr-2" />
               View Battle Tools
             </ClashButton>
           </div>
@@ -604,7 +602,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           {/* Section Header */}
           <div className="text-center mb-20">
             <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-xl">
-              <Image src="/icons/start.gif.png" alt="Clash Icon" className="w-12 h-12" />
+              <Image src="/icons/start.gif.png" alt="Clash Icon" width={20} height={20} className="w-12 h-12" />
             </div>
             <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
               Ultimate Clash Arsenal
@@ -670,7 +668,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
       <section className="py-20 bg-gray-800/50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuoWZ3_vkQe_St8BeBcBMX7ihfCOP7DsxeoQ&s" alt="Hammer" className="w-30 mx-auto mb-6" />
+            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuoWZ3_vkQe_St8BeBcBMX7ihfCOP7DsxeoQ&s" alt="Hammer" width={20} height={20} className="w-30 mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400">
               Base Builder
             </h2>
@@ -702,7 +700,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
       <section className="py-20 relative bg-gray-900/70">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <Image src="/icons/king.png" alt="Barbarian King" className="w-40 mx-auto mb-8" />
+            <Image src="/icons/king.png" alt="Barbarian King" width={40} height={40} className="w-40 mx-auto mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold mb-8 text-yellow-400">
               Ready for War?
             </h2>
@@ -728,7 +726,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <Image src="/icons/castle.png" alt="ClashTools" className="h-8 mr-2" />
+                <Image src="/icons/castle.png" alt="ClashTools"width={8} height={8}className="h-8 mr-2" />
                 <span className="text-xl font-bold text-yellow-400">
                   Clash of Clans
                 </span>
