@@ -457,9 +457,9 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
           {/* Resource Stats (Desktop Only) */}
           <div className="hidden lg:flex items-center space-x-3">
             <ResourceDisplay type="gold" value={stats.gold} emoji={<Image src="/icons/gold.webp" alt="Gold" width={20} height={20} className="w-5 h-5" />} color="yellow" />
-            <ResourceDisplay type="elixir" value={stats.elixir} emoji={<Image src="/icons/elixir" alt="Elixir" width={20} height={20} className="w-5 h-5" />} color="pink" />
+            <ResourceDisplay type="elixir" value={stats.elixir} emoji={<Image src="https://static.wikia.nocookie.net/clashroyale/images/4/43/Elixir.png/revision/latest/scale-to-width-down/100?cb=20160530182631" alt="Elixir" width={20} height={20} className="w-5 h-5" />} color="pink" />
             <ResourceDisplay type="dark" value={stats.darkElixir} emoji={<Image src="/icons/dark.webp" alt="Dark Elixir" width={20} height={20} className="w-5 h-5" />} color="purple" />
-            <ResourceDisplay type="gems" value={stats.gems} emoji={<Image src="/icons/gem" alt="Gems" width={20} height={20} className="w-5 h-5" />} color="cyan" />
+            <ResourceDisplay type="gems" value={stats.gems} emoji={<Image src="/icons/gem1.png" alt="Gems" width={30} height={30} className="w-5 h-5" />} color="cyan" />
           </div>
 
           {/* Desktop Menu (hidden on mobile) */}
@@ -556,7 +556,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
             <div className="w-32 h-32 mx-auto mb-6 relative">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-red-500/20 rounded-full animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-yellow-400">
-                <Image src="/icons/th17" alt="Town Hall" width={20} height={20} className="w-20 h-20" />
+                <Image src="/icons/th17.webp" alt="Town Hall" width={20} height={20} className="w-20 h-20" />
               </div>
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
                 TH17
@@ -581,7 +581,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
               Start Building Now
             </ClashButton>
             <ClashButton onClick={() => { }} variant="secondary" size="lg">
-              <Image src="/icons/sword" alt="Battle Tools" width={20} height={20}className="w-8 h-8 inline mr-2" />
+              <Image src="https://static.vecteezy.com/system/resources/thumbnails/011/117/398/small_2x/two-handed-great-iron-sword-with-transparent-background-free-png.png" alt="Battle Tools" width={20} height={20}className="w-8 h-8 inline mr-2" />
               View Battle Tools
             </ClashButton>
           </div>
