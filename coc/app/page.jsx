@@ -690,7 +690,14 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
       <section className="py-20 bg-gray-800/50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuoWZ3_vkQe_St8BeBcBMX7ihfCOP7DsxeoQ&s" alt="Hammer" width={20} height={20} className="w-30 mx-auto mb-6" />
+            <Image
+  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuoWZ3_vkQe_St8BeBcBMX7ihfCOP7DsxeoQ&s"
+  alt="Hammer"
+  width={120}      // Increased width
+  height={400}     // Increased height
+  className="mx-auto mb-6"  // Removed w-30 to avoid conflict
+/>
+
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400">
               Base Builder
             </h2>
