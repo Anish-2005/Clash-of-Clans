@@ -119,128 +119,149 @@ const ClashToolsLanding = () => {
     }
   ];
   // Three.js setup with enhanced visuals
-  useEffect(() => {
-    if (!heroRef.current || !isClient) return;
+ useEffect(() => {
+  if (!heroRef.current || !isClient) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const heroElement = heroRef.current; // Cache ref for cleanup
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
-    heroRef.current.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-    sceneRef.current = scene;
-    rendererRef.current = renderer;
-    cameraRef.current = camera;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+  heroElement.appendChild(renderer.domElement);
 
-    // Create floating Clash elements
-    const createClashObject = (type) => {
-      let geometry, material;
+  sceneRef.current = scene;
+  rendererRef.current = renderer;
+  cameraRef.current = camera;
 
-      if (type === 'gold') {
+  const createClashObject = (type) => {
+    let geometry, material;
+
+    switch (type) {
+      case 'gold':
         geometry = new THREE.SphereGeometry(0.4);
         material = new THREE.MeshPhongMaterial({
           color: 0xFFD700,
           emissive: 0xFFA500,
           emissiveIntensity: 0.4,
-          shininess: 100
+          shininess: 100,
         });
-      } else if (type === 'elixir') {
+        break;
+      case 'elixir':
         geometry = new THREE.SphereGeometry(0.4);
         material = new THREE.MeshPhongMaterial({
           color: 0xFF69B4,
           emissive: 0xFF1493,
           emissiveIntensity: 0.4,
-          shininess: 100
+          shininess: 100,
         });
-      } else if (type === 'dark') {
+        break;
+      case 'dark':
         geometry = new THREE.SphereGeometry(0.3);
         material = new THREE.MeshPhongMaterial({
           color: 0x8B008B,
           emissive: 0x4B0082,
           emissiveIntensity: 0.3,
-          shininess: 100
+          shininess: 100,
         });
-      } else {
-        // Gems
+        break;
+      default: // gems
         geometry = new THREE.OctahedronGeometry(0.3);
         material = new THREE.MeshPhongMaterial({
           color: 0x00FFFF,
           emissive: 0x008B8B,
           emissiveIntensity: 0.3,
-          shininess: 200
+          shininess: 200,
         });
-      }
-
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set(
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 15,
-        (Math.random() - 0.5) * 15
-      );
-
-      mesh.userData = {
-        type,
-        initialY: mesh.position.y,
-        rotationSpeed: Math.random() * 0.02 + 0.005
-      };
-      return mesh;
-    };
-
-    const meshes = [];
-    const types = ['gold', 'elixir', 'dark', 'gems'];
-    for (let i = 0; i < 12; i++) {
-      const type = types[i % types.length];
-      const mesh = createClashObject(type);
-      scene.add(mesh);
-      meshes.push(mesh);
+        break;
     }
 
-    meshesRef.current = meshes;
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(
+      (Math.random() - 0.5) * 20,
+      (Math.random() - 0.5) * 15,
+      (Math.random() - 0.5) * 15
+    );
 
-    // Enhanced lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1.0);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(directionalLight);
-
-    const pointLight = new THREE.PointLight(0xFFD700, 0.5, 50);
-    pointLight.position.set(0, 10, 10);
-    scene.add(pointLight);
-
-    camera.position.z = 25;
-
-    // Enhanced animation
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      meshes.forEach((mesh, index) => {
-        mesh.rotation.x += mesh.userData.rotationSpeed;
-        mesh.rotation.y += mesh.userData.rotationSpeed * 0.7;
-        mesh.rotation.z += mesh.userData.rotationSpeed * 0.3;
-
-        const time = Date.now() * 0.001;
-        mesh.position.y = mesh.userData.initialY + Math.sin(time + index) * 1.5;
-        mesh.position.x += Math.sin(time * 0.5 + index) * 0.01;
-      });
-
-      renderer.render(scene, camera);
+    mesh.userData = {
+      type,
+      initialY: mesh.position.y,
+      rotationSpeed: Math.random() * 0.02 + 0.005,
     };
 
-    animate();
-    setIsLoaded(true);
+    return mesh;
+  };
 
-    return () => {
-      if (heroRef.current && renderer.domElement) {
-        heroRef.current.removeChild(renderer.domElement);
-      }
-      meshes.forEach(mesh => scene.remove(mesh));
-      renderer.dispose();
-    };
-  }, [isClient]);
+  const meshes = [];
+  const types = ['gold', 'elixir', 'dark', 'gems'];
+
+  for (let i = 0; i < 12; i++) {
+    const mesh = createClashObject(types[i % types.length]);
+    scene.add(mesh);
+    meshes.push(mesh);
+  }
+
+  meshesRef.current = meshes;
+
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  directionalLight.position.set(1, 1, 1);
+  scene.add(directionalLight);
+
+  const pointLight = new THREE.PointLight(0xffd700, 0.5, 50);
+  pointLight.position.set(0, 10, 10);
+  scene.add(pointLight);
+
+  camera.position.z = 25;
+
+  // Animation loop
+  const animate = () => {
+    requestAnimationFrame(animate);
+
+    const time = Date.now() * 0.001;
+
+    meshes.forEach((mesh, index) => {
+      mesh.rotation.x += mesh.userData.rotationSpeed;
+      mesh.rotation.y += mesh.userData.rotationSpeed * 0.7;
+      mesh.rotation.z += mesh.userData.rotationSpeed * 0.3;
+
+      mesh.position.y = mesh.userData.initialY + Math.sin(time + index) * 1.5;
+      mesh.position.x += Math.sin(time * 0.5 + index) * 0.01;
+    });
+
+    renderer.render(scene, camera);
+  };
+
+  animate();
+  setIsLoaded(true);
+
+  return () => {
+    // Proper cleanup
+    if (heroElement && renderer.domElement) {
+      heroElement.removeChild(renderer.domElement);
+    }
+
+    meshes.forEach(mesh => {
+      scene.remove(mesh);
+      mesh.geometry.dispose();
+      mesh.material.dispose();
+    });
+
+    scene.clear();
+    renderer.dispose();
+  };
+}, [isClient]);
+
 
   // Handle window resize
   useEffect(() => {
@@ -270,7 +291,7 @@ const ClashToolsLanding = () => {
       clearInterval(featureInterval);
       clearInterval(testimonialInterval);
     };
-  }, []);
+ }, [features.length, testimonials.length]);
 
   // Handle scroll
   useEffect(() => {
@@ -398,7 +419,8 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
             <span key={i} className="text-yellow-400 text-lg">⭐</span>
           ))}
         </div>
-        <p className="text-gray-300 mb-4 italic">"{testimonial.quote}"</p>
+        <p className="text-gray-300 mb-4 italic">&quot;{testimonial.quote}&quot;</p>
+
         <div className="flex justify-between items-center">
           <div>
             <p className="text-yellow-400 font-bold">{testimonial.name}</p>
