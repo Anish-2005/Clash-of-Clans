@@ -1,7 +1,6 @@
 # ⚔️ Clash of Clans Tribute - UI/UX Recreation ⚔️
 
 <div align="center">
-  <img src="https://i.imgur.com/bqLN3uN.gif" alt="Clash of Clans Banner" width="600">
   
   [![Next.js](https://img.shields.io/badge/Next.js-14.2.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
