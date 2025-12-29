@@ -444,7 +444,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
       {/* Enhanced Navigation */}
         <nav className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-500
-        ${isScrolled ? 'bg-gray-900/95 backdrop-blur-md py-3 shadow-2xl border-b border-yellow-500/30' : 'bg-transparent py-4'}
+        ${isScrolled ? 'bg-black/30 backdrop-blur-lg py-3 shadow-2xl border-b border-yellow-500/30' : 'bg-transparent py-4'}
       `}>
         <div className="container mx-auto px-6 flex justify-between items-center">
 
@@ -473,7 +473,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-yellow-400 font-medium transition-all duration-300 hover:scale-105"
+                className="text-gray-900 hover:text-yellow-700 font-medium transition-all duration-300 hover:scale-105"
               >
                 {item}
               </a>
@@ -569,15 +569,17 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
             </div>
             <p className="text-sm text-yellow-400 font-semibold mb-2">NEW: TOWN HALL 17 SUPPORT</p>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">Master</span>{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">Every</span>{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Battle</span>
+              <span className="relative inline-block px-2 py-1 rounded-lg border-2 border-yellow-400 bg-black/70">Master</span>{' '}
+              <span className="relative inline-block px-2 py-1 rounded-lg border-2 border-red-400 bg-black/70">Every</span>{' '}
+              <span className="relative inline-block px-2 py-1 rounded-lg border-2 border-blue-400 bg-black/70">Battle</span>
             </h1>
           </div>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            The most advanced toolkit for Clash of Clans. Design perfect bases, master attack strategies,
-            and dominate every war with AI-powered tools trusted by millions of players worldwide.
+            <span className="inline-block px-4 py-2 rounded-lg border-2 border-yellow-400 bg-black/70">
+              The most advanced toolkit for Clash of Clans. Design perfect bases, master attack strategies,
+              and dominate every war with AI-powered tools trusted by millions of players worldwide.
+            </span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
