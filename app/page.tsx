@@ -440,7 +440,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-transparent text-white overflow-hidden">
       {/* Enhanced Navigation */}
         <nav className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-500
