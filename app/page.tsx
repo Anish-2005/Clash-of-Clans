@@ -22,11 +22,11 @@ const ClashToolsLanding = () => {
     warWins: 247
   });
 
-  const heroRef = useRef();
-  const sceneRef = useRef();
-  const rendererRef = useRef();
-  const cameraRef = useRef();
-  const meshesRef = useRef([]);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const meshesRef = useRef<THREE.Mesh[]>([]);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -119,27 +119,27 @@ const ClashToolsLanding = () => {
     }
   ];
   // Three.js setup with enhanced visuals
- useEffect(() => {
-  if (!heroRef.current || !isClient) return;
+  useEffect(() => {
+    if (!heroRef.current || !isClient) return;
 
-  const heroElement = heroRef.current; // Cache ref for cleanup
+    const heroElement = heroRef.current as HTMLDivElement;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x000000, 0);
-  heroElement.appendChild(renderer.domElement);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    heroElement.appendChild(renderer.domElement);
 
-  sceneRef.current = scene;
-  rendererRef.current = renderer;
-  cameraRef.current = camera;
+    sceneRef.current = scene;
+    rendererRef.current = renderer;
+    cameraRef.current = camera;
 
   const createClashObject = (type) => {
     let geometry, material;
@@ -247,14 +247,19 @@ const ClashToolsLanding = () => {
 
   return () => {
     // Proper cleanup
-    if (heroElement && renderer.domElement) {
+    if (heroElement && renderer.domElement && heroElement.contains(renderer.domElement)) {
       heroElement.removeChild(renderer.domElement);
     }
 
     meshes.forEach(mesh => {
       scene.remove(mesh);
       mesh.geometry.dispose();
-      mesh.material.dispose();
+      // Type guard for material dispose
+      if (Array.isArray(mesh.material)) {
+        mesh.material.forEach(mat => mat.dispose());
+      } else {
+        mesh.material.dispose();
+      }
     });
 
     scene.clear();
