@@ -11,7 +11,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   // Clash of Clans official-style background image (publicly available)
   // Example: https://wallpapers.com/images/hd/clash-of-clans-village-4k-0v7k7v7k7k7k7k7k.jpg
   // You can swap for any other official COC background if you prefer

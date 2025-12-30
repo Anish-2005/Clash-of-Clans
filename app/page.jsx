@@ -22,11 +22,11 @@ const ClashToolsLanding = () => {
     warWins: 247
   });
 
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const meshesRef = useRef<THREE.Mesh[]>([]);
+  const heroRef = useRef(null);
+  const sceneRef = useRef(null);
+  const rendererRef = useRef(null);
+  const cameraRef = useRef(null);
+  const meshesRef = useRef([]);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -122,7 +122,7 @@ const ClashToolsLanding = () => {
   useEffect(() => {
     if (!heroRef.current || !isClient) return;
 
-    const heroElement = heroRef.current as HTMLDivElement;
+    const heroElement = heroRef.current ;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -371,7 +371,7 @@ const ResourceDisplay = ({ type, value, emoji, color }) => (
 
           <div className="flex justify-between items-start mb-6">
             <div className="w-20 h-20 flex items-center justify-center bg-gray-800/50 rounded-xl border border-gray-700">
-              <img
+              <Image
                 src={feature.iconImg}
                 alt={`${feature.title} icon`}
                 className="w-12 h-12 object-contain drop-shadow-md"
@@ -672,7 +672,7 @@ const menuItems = ['Features', 'Tools', 'Simulator', 'Analytics', 'Community'];
               </div>
               <div className="bg-gray-900/50 rounded-2xl p-8 border border-gray-700">
                 <div className="text-center">
-                  <img
+                  <Image
                     src={features[activeFeature].iconImg}
                     alt={`${features[activeFeature].title} Icon`}
                     className="w-20 h-20 mb-4 mx-auto"
